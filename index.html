@@ -1583,7 +1583,7 @@
         }
 
         /* ========================================
-           RESPONSIVE DESIGN
+           RESPONSIVE & MOBILE-FIRST OPTIMIZATIONS
            ======================================== */
         @media (max-width: 1024px) {
             .nav-links, .nav-cta { display: none; }
@@ -1598,33 +1598,206 @@
             .plan-card.featured:hover { transform: translateY(-4px); }
         }
 
-        @media (max-width: 768px) {
-            .section-padding { padding: 60px 0; }
-            .about-grid { grid-template-columns: 1fr; gap: 32px; }
-            .about-image img { height: 350px; }
-            .programs-grid { grid-template-columns: 1fr; }
-            .plans-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
-            .trainers-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-            .facilities-grid { grid-template-columns: repeat(2, 1fr); }
-            .transforms-grid { grid-template-columns: 1fr; max-width: 500px; }
-            .gallery-grid { columns: 2; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
-            .hero-stats { gap: 24px; flex-wrap: wrap; }
-            .hero-stat .number { font-size: 2.2rem; }
-            .testimonial-card { min-width: calc(100% - 16px); }
-            .float-btn.join { display: flex; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+        /* Mobile specific bottom CTA bar */
+        .mobile-bottom-bar {
+            display: none;
         }
 
-        @media (max-width: 480px) {
-            .about-features { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 74px; /* Space for sticky bottom action bar */
+            }
+            .section-padding { padding: 48px 0; }
+            .container { padding: 0 16px; }
+            .section-title { font-size: 2.2rem; margin-bottom: 14px; }
+            .section-subtitle { font-size: 0.95rem; }
+
+            /* Navbar on mobile */
+            .navbar { padding: 12px 0; }
+            .nav-logo { font-size: 1.45rem; }
+            .nav-logo .logo-icon { width: 34px; height: 34px; font-size: 0.95rem; }
+
+            /* Hero on mobile */
+            .hero {
+                min-height: 100svh;
+                padding: 100px 0 50px;
+                display: flex;
+                align-items: center;
+            }
+            .hero-content { padding-top: 10px; }
+            .hero-badge {
+                font-size: 0.72rem;
+                padding: 6px 14px;
+                margin-bottom: 16px;
+            }
+            .hero h1 {
+                font-size: 3.1rem;
+                line-height: 1.0;
+                margin-bottom: 18px;
+                letter-spacing: 1.5px;
+            }
+            .hero-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 28px;
+            }
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+                margin-bottom: 36px;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                justify-content: center;
+                padding: 16px 20px;
+                font-size: 1rem;
+            }
+
+            /* Stats on mobile - compact 2x2 grid */
+            .hero-stats {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px 20px;
+                padding-top: 24px;
+                padding-bottom: 10px;
+            }
+            .hero-stat .number {
+                font-size: 2rem;
+            }
+            .hero-stat .label {
+                font-size: 0.75rem;
+            }
+            .hero-scroll { display: none !important; }
+
+            /* About section on mobile */
+            .about-grid { grid-template-columns: 1fr; gap: 28px; }
+            .about-image img { height: 260px; }
+            .about-image .experience-badge {
+                padding: 12px 18px;
+                bottom: 14px;
+                left: 14px;
+            }
+            .experience-badge .number { font-size: 2.2rem; }
+            .experience-badge .text { font-size: 0.75rem; }
+            .about-features { grid-template-columns: 1fr; gap: 12px; }
+
+            /* Programs on mobile */
+            .programs-grid { grid-template-columns: 1fr; gap: 18px; }
+            .program-card-image { height: 190px; }
+            .program-card-body { padding: 20px 16px; margin-top: -24px; }
+            .program-card-body h3 { font-size: 1.4rem; }
+
+            /* Plans on mobile */
+            .plans-grid {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+                gap: 20px;
+                margin-top: 32px;
+            }
+            .plan-card { padding: 28px 20px; }
+            .plan-price { font-size: 3rem; }
+            .plan-card .btn { padding: 14px 20px; font-size: 0.95rem; }
+
+            /* Trainers & Facilities */
+            .trainers-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .trainer-card-image { height: 210px; }
+            .trainer-card-body { padding: 14px 12px; }
+            .trainer-card-body h3 { font-size: 1.1rem; }
+            .trainer-card-body .specialty { font-size: 0.75rem; }
+            .trainer-card-body .experience { font-size: 0.7rem; }
+
+            .facilities-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .facility-item { padding: 20px 14px; }
+            .facility-item .icon { width: 48px; height: 48px; font-size: 1.2rem; margin-bottom: 10px; }
+            .facility-item h4 { font-size: 0.95rem; }
+            .facility-item p { font-size: 0.75rem; }
+
+            /* Transformations & Gallery */
+            .transforms-grid { grid-template-columns: 1fr; gap: 18px; }
+            .transform-images .before, .transform-images .after { height: 200px; }
+            .gallery-grid { columns: 2; column-gap: 10px; }
+            .gallery-item { margin-bottom: 10px; }
+
+            /* Contact Form on mobile */
+            .contact-grid { grid-template-columns: 1fr; gap: 28px; }
+            .contact-form { padding: 24px 18px; }
+            .contact-form h3 { font-size: 1.5rem; }
+            .form-group input, .form-group select {
+                padding: 14px 16px;
+                font-size: 16px; /* Prevents auto-zoom on iOS Safari */
+            }
+            .info-card { padding: 18px 14px; }
+            .info-card .icon { width: 40px; height: 40px; min-width: 40px; font-size: 1rem; }
+
+            /* Footer */
+            .footer { padding: 40px 0 24px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+
+            /* Floating buttons adjustment for mobile */
+            .floating-buttons {
+                display: none; /* Replaced by the native sticky bottom bar */
+            }
+
+            /* Sticky Mobile Bottom Bar */
+            .mobile-bottom-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 64px;
+                background: rgba(13, 13, 13, 0.96);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                border-top: 1px solid rgba(255, 90, 31, 0.25);
+                z-index: 1000;
+                padding: 8px 12px;
+                gap: 10px;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.6);
+            }
+
+            .mobile-bottom-bar .bar-btn {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                border-radius: 8px;
+                font-size: 0.88rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                text-decoration: none;
+                transition: var(--transition);
+            }
+
+            .mobile-bottom-bar .bar-btn.call-btn {
+                background: var(--charcoal-light);
+                color: var(--white);
+                border: 1px solid rgba(255,255,255,0.15);
+                max-width: 50px;
+                flex: 0 0 50px;
+            }
+
+            .mobile-bottom-bar .bar-btn.whatsapp-btn {
+                background: #25D366;
+                color: #FFFFFF;
+                box-shadow: 0 3px 12px rgba(37, 211, 102, 0.3);
+            }
+
+            .mobile-bottom-bar .bar-btn.join-btn {
+                background: var(--orange);
+                color: var(--white);
+                box-shadow: 0 3px 12px rgba(255, 90, 31, 0.35);
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero h1 { font-size: 2.7rem; }
             .trainers-grid { grid-template-columns: 1fr; }
             .facilities-grid { grid-template-columns: 1fr; }
-            .gallery-grid { columns: 2; column-gap: 10px; }
-            .hero-stats { gap: 20px; }
-            .contact-form { padding: 24px; }
         }
 
         /* ========================================
@@ -2495,7 +2668,14 @@
         <img src="" alt="Gallery Image" id="lightboxImg">
     </div>
 
-    <!-- FLOATING BUTTONS -->
+    <!-- STICKY MOBILE BOTTOM BAR (Conversion Optimized) -->
+    <div class="mobile-bottom-bar" id="mobileBottomBar">
+        <a href="tel:+924235123456" class="bar-btn call-btn" aria-label="Call Iron Haveli"><i class="fas fa-phone-alt"></i></a>
+        <a href="https://wa.me/923001234567?text=Hi%20Iron%20Haveli!%20I'd%20like%20to%20know%20more%20about%20gym%20membership" class="bar-btn whatsapp-btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#membership" class="bar-btn join-btn"><i class="fas fa-bolt"></i> Join Now</a>
+    </div>
+
+    <!-- FLOATING BUTTONS (Desktop / Tablet) -->
     <div class="floating-buttons">
         <a href="#membership" class="float-btn join" aria-label="Join Now"><i class="fas fa-bolt"></i></a>
         <a href="https://wa.me/923001234567" class="float-btn whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
